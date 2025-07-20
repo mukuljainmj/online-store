@@ -1,24 +1,40 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ProductList from "./ProductList";
+import ProductList from "./components/ProductList";
 import { Provider } from "react-redux";
 import store from "./store/index";
-import Navigation from "./Navigation";
+import Navigation from "./components/Navigation";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import Cart from "./components/Cart";
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Navigation />
-      <ProductList />
-    </div>
+      <Outlet />
+    </Provider>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <ProductList />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+    ],
+  },
+]);
+
+root.render(<RouterProvider router={router} />);
 
 export default App;

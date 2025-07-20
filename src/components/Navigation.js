@@ -1,15 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
 
 function Navigation() {
   const { totalQuantity, totalAmount } = useSelector((state) => state.cart);
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Shop Now</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          Shop Now
+        </Link>
       </div>
       <div className="flex-none">
-        <div className="dropdown dropdown-end">
+        <Link to="/cart" className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
@@ -32,19 +35,7 @@ function Navigation() {
               </span>
             </div>
           </div>
-          <div
-            tabIndex={0}
-            className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow"
-          >
-            <div className="card-body">
-              <span className="text-lg font-bold">{totalQuantity} Items</span>
-              <span className="text-info">Subtotal: ${totalAmount}</span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
