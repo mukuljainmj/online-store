@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mukuljainmj/online-store#readme",
   "devDependencies": {
+    "daisyui": "^5.0.46",
     "parcel": "^2.15.4"
   },
   "dependencies": {
