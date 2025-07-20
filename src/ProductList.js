@@ -1,10 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import mockProducts from "./mock-data/mockProducts";
 import ProductCard from "./ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "./store/productsSlice";
 
 function ProductList() {
-  const [productList, setProductList] = useState();
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const mockFetchProducts = () => {
@@ -17,14 +20,14 @@ function ProductList() {
     const fetchData = async () => {
       const response = await mockFetchProducts();
       const data = await response.json();
-      setProductList(data);
+      dispatch(setProducts(data));
     };
     fetchData();
   }, []);
   return (
     <div className="flex flex-wrap justify-center gap-4 p-4">
-      {productList &&
-        productList.map((product) => (
+      {products &&
+        products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
     </div>
