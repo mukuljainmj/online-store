@@ -1,15 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
-import mockProducts from "./mock-data/mockProducts";
+import mockProducts from "../mock-data/mockProducts";
 import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "./store/productsSlice";
+import { setProducts } from "../store/productsSlice";
 
 function ProductList() {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // In real application, we would fetch products from an API.
+    if (products) return; // this return is needed as we are working with mock data, in real application we would not have this check
     const mockFetchProducts = () => {
       return new Promise((resolve) => {
         setTimeout(() => {

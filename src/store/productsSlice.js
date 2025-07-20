@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = [];
+const initialState = null;
 const productsSlice = createSlice({
   name: "products",
   initialState,
@@ -13,7 +13,6 @@ const productsSlice = createSlice({
       if (product) {
         product.stock = stock;
       }
-      return state;
     },
   },
 });

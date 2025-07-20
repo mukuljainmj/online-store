@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "./store/cartSlice";
-import { updateStock } from "./store/productsSlice";
+import { addItemToCart } from "../store/cartSlice";
+import { updateStock } from "../store/productsSlice";
 import { formatDistanceToNow } from "date-fns";
 
 function ProductCard({ product }) {
